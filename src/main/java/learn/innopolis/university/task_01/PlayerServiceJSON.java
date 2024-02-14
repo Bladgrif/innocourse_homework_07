@@ -48,9 +48,14 @@ public class PlayerServiceJSON implements PlayerService {
 
     @Override
     public Player deletePlayer(int id) {
+        int i = 1;
         Player playerToDelete = getPlayerById(id);
         if (playerToDelete != null) {
             players.remove(playerToDelete);
+            for (Player player : players) {
+                player.setId(i);
+                i++;
+            }
             savePlayers();
         }
         return playerToDelete;
@@ -59,10 +64,10 @@ public class PlayerServiceJSON implements PlayerService {
     @Override
     public int addPoints(int playerId, int points) {
         Player player = getPlayerById(playerId);
-        if (player!= null) {
+        if (player != null) {
             player.setPoints(player.getPoints() + points);
-             savePlayers();
-             return player.getPoints();
+            savePlayers();
+            return player.getPoints();
         }
         return 0;
     }

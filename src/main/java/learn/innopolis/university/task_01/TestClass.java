@@ -9,30 +9,35 @@ public class TestClass {
 
 
     public static void main(String[] args) {
-
-        System.out.println("Добавление элементов");
         PlayerService service = new PlayerServiceJSON();
-        int id = service.createPlayer("Aragorn");
-        int id_01 = service.createPlayer("Boromir");
-        int id_02 = service.createPlayer("Sauron");
 
-        System.out.println("Получение элемента по id");
-        System.out.println(service.getPlayerById(id));
-        System.out.println("Добавление очков по id");
-        service.addPoints(id,10);
-        System.out.println("Получение элемента по id");
-        System.out.println(service.getPlayerById(id));
-        System.out.println("Получение элемента по id");
-        System.out.println(service.getPlayers());
-        System.out.println("Удаление элемента по id");
-        service.deletePlayer(id);
-        System.out.println("Получение всех элементов");
-        System.out.println(service.getPlayers());
-        System.out.println("Удаление элемента по id_02");
-        service.deletePlayer(id_02);
-        System.out.println("Получение всех элементов");
-        System.out.println(service.getPlayers());
+        System.out.println("Добавление элементов:\n Aragorn\n Boromir\n Sauron\n Melkor\n");
+        service.createPlayer("Aragorn");
+        service.createPlayer("Boromir");
+        service.createPlayer("Sauron");
+        service.createPlayer("Melkor");
 
+        System.out.println("Получение элемента по id = 2");
+        System.out.println(service.getPlayerById(2) + "\n");
+
+        System.out.println("Добавление очков по id = 2");
+        service.addPoints(2,10);
+
+        System.out.println("Проверка добавления очков");
+        System.out.println(service.getPlayerById(2) + "\n");
+
+        System.out.println("Удаление элемента по id = 2");
+        service.deletePlayer(2);
+
+        System.out.println("Получение всех элементов и проверка на то, что Id были отредактированы");
+        System.out.println(service.getPlayers() + "\n");
+
+        System.out.println("Снова адаление элемента по id = 2");
+        service.deletePlayer(2);
+        System.out.println("Получение всех элементов и проверка на то, что Id были отредактированы");
+        System.out.println(service.getPlayers() + "\n");
+
+        System.out.println("Добавление элемента");
         int id_03 = service.createPlayer("Gandalf");
         System.out.println(service.getPlayers());
 
